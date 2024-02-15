@@ -27,8 +27,32 @@ function App() {
   const [choiceimg, setChoiceimg] = useState([Paper,Scissors,Rock])
   const [choiceIA, setChoiceIA] = useState("")
 
-  function getRandomInt(max) {
+  let getRandomInt = (max) =>{
     return Math.floor(Math.random() * max);
+  }
+
+  let game = (player,ordi) =>{
+  if (ordi == player) {
+    return "DRAW"
+  }else if (player == Paper ) {
+      if (ordi == Scissors) {
+          return "LOSE"
+      }else{
+        return "WIN"
+      }
+  }else if (player == Rock) {
+      if (ordi == Paper) {
+          return "LOSE"
+      }else{
+          return "WIN"
+      }
+  }else if (player == Scissors) {
+      if (ordi == Rock) {
+          return "LOSE"
+      }else{
+          return "WIN"
+      }
+  }
   }
 
   let randomChoice = () => {
@@ -46,7 +70,7 @@ function App() {
         ?
         <Choice choiceimg={choiceimg} setChoice={setChoice} setfight={setFight} paper={Paper} rock={Rock} scissors={Scissors} triangle={Triangle} colors={colors} setColor={setColor} randomChoice={randomChoice}></Choice>
         :
-        <Fight choiceIA={choiceIA} colorIA={colorIA} choice={choice} setFight={setFight} color={color}></Fight>
+        <Fight choiceIA={choiceIA} colorIA={colorIA} choice={choice} setFight={setFight} color={color} game={game}></Fight>
       }
       <Modal rules={Rules} close={Close} txt={"Rules"}></Modal>
       
