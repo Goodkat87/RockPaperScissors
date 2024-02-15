@@ -26,7 +26,8 @@ function App() {
   const [choice, setChoice] = useState("")
   const [choiceimg, setChoiceimg] = useState([Paper,Scissors,Rock])
   const [choiceIA, setChoiceIA] = useState("")
-
+  const [score, setScore] = useState(0)
+  const [txtbtn, settxtbtn] = useState("PLAY AGAIN")
   let getRandomInt = (max) =>{
     return Math.floor(Math.random() * max);
   }
@@ -38,19 +39,22 @@ function App() {
       if (ordi == Scissors) {
           return "LOSE"
       }else{
+        
         return "WIN"
       }
   }else if (player == Rock) {
       if (ordi == Paper) {
-          return "LOSE"
+        return "LOSE"
       }else{
-          return "WIN"
+        
+        return "WIN"
       }
   }else if (player == Scissors) {
       if (ordi == Rock) {
           return "LOSE"
       }else{
-          return "WIN"
+        
+      return "WIN"
       }
   }
   }
@@ -59,19 +63,20 @@ function App() {
     let random= getRandomInt(3)
     setChoiceIA(choiceimg[random])
     setColorIA(colors[random])
-    
   }
 
-  
   return (
+
     <div className='h-screen w-screen bg-gradient-to-b from-[#1f3756] to-[#141539] flex flex-col items-center justify-center gap-5 relative'>
-      <Title logo={Logo} ></Title>
+      <Title score={score} logo={Logo} ></Title>
+
       {fight
         ?
         <Choice choiceimg={choiceimg} setChoice={setChoice} setfight={setFight} paper={Paper} rock={Rock} scissors={Scissors} triangle={Triangle} colors={colors} setColor={setColor} randomChoice={randomChoice}></Choice>
         :
-        <Fight choiceIA={choiceIA} colorIA={colorIA} choice={choice} setFight={setFight} color={color} game={game}></Fight>
+        <Fight settxtbtn={settxtbtn} txtbtn={txtbtn} score={score} setScore={setScore} choiceIA={choiceIA} colorIA={colorIA} choice={choice} setFight={setFight} color={color} game={game}></Fight>
       }
+      
       <Modal rules={Rules} close={Close} txt={"Rules"}></Modal>
       
     </div>
