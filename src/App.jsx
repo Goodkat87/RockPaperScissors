@@ -18,14 +18,35 @@ import Fight from './components/Fight'
 
 function App() {
   const [fight, setFight] = useState(true)
+  const [colors, setColors] = useState(["bg-gradient-to-b from-[hsl(230,89%,62%)] to-[hsl(230,89%,65%)]",
+                                        "bg-gradient-to-t from-[hsl(39,89%,49%)] to-[hsl(40,84%,53%)]",
+                                        "bg-gradient-to-t from-[hsl(349,71%,52%)] to-[hsl(349,70%,56%)]"])
+  const [color, setColor] = useState("")
+  const [colorIA, setColorIA] = useState("")
+  const [choice, setChoice] = useState("")
+  const [choiceimg, setChoiceimg] = useState([Paper,Scissors,Rock])
+  const [choiceIA, setChoiceIA] = useState("")
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  let randomChoice = () => {
+    let random= getRandomInt(3)
+    setChoiceIA(choiceimg[random])
+    setColorIA(colors[random])
+    
+  }
+
+  
   return (
     <div className='h-screen w-screen bg-gradient-to-b from-[#1f3756] to-[#141539] flex flex-col items-center justify-center gap-5 relative'>
       <Title logo={Logo} ></Title>
       {fight
         ?
-        <Choice setfight={setFight} paper={Paper} rock={Rock} scissors={Scissors} triangle={Triangle}></Choice>
+        <Choice choiceimg={choiceimg} setChoice={setChoice} setfight={setFight} paper={Paper} rock={Rock} scissors={Scissors} triangle={Triangle} colors={colors} setColor={setColor} randomChoice={randomChoice}></Choice>
         :
-        <Fight paper={Paper} rock={Rock} scissors={Scissors} setFight={setFight}></Fight>
+        <Fight choiceIA={choiceIA} colorIA={colorIA} choice={choice} setFight={setFight} color={color}></Fight>
       }
       <Modal rules={Rules} close={Close} txt={"Rules"}></Modal>
       
