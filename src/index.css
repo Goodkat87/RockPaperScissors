@@ -4,11 +4,10 @@
 
 @font-face {
   font-family: Barlow Semi Condensed;
-  src: url(./assets/Fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Bold.ttf);
+  src: url(./assets/Fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Thin.ttf);
 }
 
 body{
-  font-family: Barlow Semi Condensed ;
   margin: 0;
   padding: 0;
 }
