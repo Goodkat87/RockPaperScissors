@@ -12,12 +12,14 @@ import Logo from "./assets/img/logo.svg"
 
 //import of components
 import Title from './components/Title'
+import Modal from './components/Modal'
 
 function App() {
 
   return (
-    <div className='h-screen w-screen bg-gradient-to-b from-[#1f3756] to-[#141539] flex flex-col items-center justify-center '>
+    <div className='h-screen w-screen bg-gradient-to-b from-[#1f3756] to-[#141539] flex flex-col items-center justify-center relative'>
       <Title logo={Logo} ></Title>
+      <Modal rules={Rules} close={Close} txt={"Rules"}></Modal>
       
     </div>
   )
