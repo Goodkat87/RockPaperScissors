@@ -3,7 +3,7 @@ import React, {useRef} from 'react'
 export default function Modal(props) {
     const modal = useRef(null)
   return (
-    <div className="absolute bottom-3 right-3">
+    <div className="absolute bottom-3 right-3 max-[376px]:right-[125px]">
         {/* You can open the modal using document.getElementById('ID').showModal() method */}
         <button className=" border border-white bg-transparent w-32 h-9 rounded-lg text-white" onClick={()=>modal.current.showModal()}>{props.txt}</button>
         <dialog ref={modal} className="modal">
